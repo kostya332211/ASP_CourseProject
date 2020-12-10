@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Chess.Logic/1.0.0": {
+        "dependencies": {
+          "Chess.Core": "1.0.0"
+        },
+        "runtime": {
+          "Chess.Logic.dll": {}
+        }
+      },
+      "Chess.Core/1.0.0": {
+        "runtime": {
+          "Chess.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Chess.Logic/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Chess.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

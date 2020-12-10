@@ -1,0 +1,46 @@
+﻿<link rel="stylesheet" href="~/css/chat.css" />
+<div class="main">
+    <div class="px-2 scroll" id="chat-container">
+
+    </div>
+    <nav class="navbar bg-white navbar-expand-sm d-flex justify-content-between">
+        @if (ViewBag.IsBlockedChat)
+        {
+            <input disabled="disabled" type="text" name="text" class="form-control" placeholder="You Blocked in chat!!!" id="message">
+        }
+        else
+        {
+            <input type="text" name="text" class="form-control" placeholder="Type a message..." id="message">
+            <input type="button" id="sendBtn" value="Send" class="btn-secondary"/>
+        }
+        <div class="icondiv d-flex justify-content-end align-content-center text-center ml-2"> <i class="fa fa-paperclip icon1"></i> <i class="fa fa-arrow-circle-right icon2"></i> </div>
+    </nav>
+</div>
+
+<script>
+    var hubConnection = new signalR.HubConnectionBuilder()
+        .withUrl("/chat")
+        .build();
+
+    hubConnection.on("Send", function (data) {
+        var classes = '';
+        if (data.isCallerMessage) {
+            classes = "text-right justify-content-end";
+        }
+        var message = `<div class="d-flex align-items-center ${classes}">
+            <div class="pr-2">
+                <span class="name">${data.name}</span>
+                <p class="msg">${data.message}</p>
+            </div>
+        </div>`;
+        $('#chat-container').append(message);
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", function (e) {
+        var message = document.getElementById("message").value;
+        hubConnection.invoke("Send", message);
+        $('#message').val('');
+    });
+
+    hubConnection.start();
+</script>

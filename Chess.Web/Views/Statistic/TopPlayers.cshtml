@@ -1,0 +1,203 @@
+﻿<nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" data-toggle="tab" href="#nav-bullet" role="tab" aria-controls="nav-home" aria-selected="true">Bullet</a>
+        <a class="nav-item nav-link" data-toggle="tab" href="#nav-blitz" role="tab" aria-controls="nav-profile" aria-selected="false">Blitz</a>
+        <a class="nav-item nav-link" data-toggle="tab" href="#nav-rapid" role="tab" aria-controls="nav-contact" aria-selected="false">Rapid</a>
+        <a class="nav-item nav-link"  data-toggle="tab" href="#nav-pawns" role="tab" aria-controls="nav-home" aria-selected="false">Only pawns</a>
+        <a class="nav-item nav-link" data-toggle="tab" href="#nav-knights" role="tab" aria-controls="nav-profile" aria-selected="false">Only knights</a>
+        <a class="nav-item nav-link" data-toggle="tab" href="#nav-queens" role="tab" aria-controls="nav-contact" aria-selected="false">Only queens</a>
+    </div>
+</nav>
+
+<div class="tab-content" id="nav-tabContent">
+<div class="tab-pane fade show active" id="nav-bullet" role="tabpanel">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody id="topBulletBody">
+       
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane fade" id="nav-blitz" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody id="topBlitzBody">
+        
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane fade" id="nav-rapid" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody id="topRapidBody">
+       
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane fade" id="nav-pawns" role="tabpanel" aria-labelledby="nav-home-tab">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody id="topPawnsBody">
+       
+        </tbody>
+    </table>
+</div>
+
+
+<div class="tab-pane fade" id="nav-knights" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Nickname</th>
+        </tr>
+        </thead>
+        <tbody id="topKnightsBody">
+        
+        </tbody>
+    </table>
+</div>
+
+<div class="tab-pane fade" id="nav-queens" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Nickname</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody id="topQueensBody">
+       
+        </tbody>
+    </table>
+</div>
+
+</div>
+
+<script>
+    $.get("/api/statistic/topPlayersBlitz").then(result => {
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.blitzRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topBlitzBody').innerHTML = markup;
+    });
+
+    $.get("/api/statistic/topPlayersBullet").then(result => {
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.bulletRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topBulletBody').innerHTML = markup;
+    });
+
+    $.get("/api/statistic/topPlayersRapid").then(result => {
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.rapidRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topRapidBody').innerHTML = markup;
+    });
+
+    $.get("/api/statistic/topPlayersPawnsMode").then(result => {
+        console.log(result);
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.onlyPawnsRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topPawnsBody').innerHTML = markup;
+    });
+
+    $.get("/api/statistic/topPlayersKnightsMode").then(result => {
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.onlyKnightsRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topKnightsBody').innerHTML = markup;
+    });
+
+    $.get("/api/statistic/topPlayersQueensMode").then(result => {
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th scope="row">${i + 1}</th>`;
+            markup += `<th>${result[i].firstName}</th>`;
+            markup += `<th>${result[i].lastName}</th>`;
+            markup += `<th>${result[i].nickname}</th>`;
+            markup += `<th>${result[i].playerDetails.onlyQueensRating}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('topQueensBody').innerHTML = markup;
+    });
+</script>

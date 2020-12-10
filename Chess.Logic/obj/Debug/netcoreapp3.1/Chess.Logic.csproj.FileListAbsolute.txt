@@ -1,0 +1,12 @@
+D:\ChessProject\ChessProject\Chess.Logic\bin\Debug\netcoreapp3.1\Chess.Logic.deps.json
+D:\ChessProject\ChessProject\Chess.Logic\bin\Debug\netcoreapp3.1\Chess.Logic.dll
+D:\ChessProject\ChessProject\Chess.Logic\bin\Debug\netcoreapp3.1\Chess.Logic.pdb
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.csproj.CoreCompileInputs.cache
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.AssemblyInfoInputs.cache
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.AssemblyInfo.cs
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.dll
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.pdb
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.csprojAssemblyReference.cache
+D:\ChessProject\ChessProject\Chess.Logic\bin\Debug\netcoreapp3.1\Chess.Core.dll
+D:\ChessProject\ChessProject\Chess.Logic\bin\Debug\netcoreapp3.1\Chess.Core.pdb
+D:\ChessProject\ChessProject\Chess.Logic\obj\Debug\netcoreapp3.1\Chess.Logic.csproj.CopyComplete

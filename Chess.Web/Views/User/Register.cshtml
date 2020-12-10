@@ -1,0 +1,37 @@
+﻿@model Chess.Web.Models.ValidationModels.RegisterValidationModel
+
+<form asp-action="Register" method="post">
+    <div class="container col-6">
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input type="text" asp-for="FirstName" class="form-control" data-val="false" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input type="text" asp-for="LastName" class="form-control" data-val="false" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nickname"></label>
+            <input type="text" asp-for="Nickname" class="form-control" data-val="false" />
+            <span asp-validation-for="Nickname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input type="email" asp-for="Email" class="form-control" data-val="false" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" class="form-control" data-val="false" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RePassword"></label>
+            <input type="password" asp-for="RePassword" class="form-control" data-val="false" />
+            <span asp-validation-for="RePassword" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Register" class="btn btn-secondary col-12" />
+    </div>
+</form>

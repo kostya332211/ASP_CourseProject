@@ -1,0 +1,84 @@
+﻿<div class="tab-pane fade show active" role="tabpanel">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">First name</th>
+                <th scope="col">Last name</th>
+                <th scope="col">Nickname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="playersBody">
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function load() {
+        $.get("/api/user/getAll").then(result => {
+            var markup = '';
+            for (var i = 0; i < result.length; i++) {
+                markup += '<tr>';
+                markup += `<th scope="row">${result[i].firstName}</th>`;
+                markup += `<th>${result[i].lastName}</th>`;
+                markup += `<th>${result[i].nickname}</th>`;
+                markup += `<th>${result[i].email}</th>`;
+                markup += `<th>${result[i].status.statusName}</th>`;
+                markup += 
+                    `<th><a onclick=amnisty('${result[i].id}')><img src="/icons/admin-icons/user.svg" width=20/></a>
+                 <a onclick=banChat('${result[i].id}')><img src="/icons/admin-icons/speaker.svg" width=20/></a>
+                 <a onclick=banPermanent('${result[i].id}')><img src="/icons/admin-icons/exit.svg" width=20/></a>
+                 <a onclick=deleteUser('${result[i].id}')><img src="/icons/admin-icons/trash.svg" width=20/></a></th>`;
+                markup += '</tr>';
+            }
+            document.getElementById('playersBody').innerHTML = markup;
+        });
+    }
+    
+
+    function banPermanent(id) {
+        $.ajax({
+            url: '/api/user/banPermanent?id='+ id,
+            type: 'PUT',
+            success: function(data) {
+                load();
+            }
+        });
+    }
+
+    function banChat(id) {
+        $.ajax({
+            url: '/api/user/banChat?id=' + id,
+            type: 'PUT',
+            success: function (data) {
+                load();
+            }
+        });
+    }
+
+    function deleteUser(id) {
+        $.ajax({
+            url: '/api/user/deleteUser?id=' + id,
+            type: 'DELETE',
+            success: function (data) {
+                load();
+            }
+        });
+    }
+
+    function amnisty(id) {
+        $.ajax({
+            url: '/api/user/amnisty?id=' + id,
+            type: 'PUT',
+            success: function (data) {
+                load();
+            }
+        });
+    }
+
+    load();
+
+</script>
