@@ -5723,11 +5723,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
+      "projectUniqueName": "D:\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
       "projectName": "Сhess.Infrastructure",
-      "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
+      "projectPath": "D:\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\KostyaShiriton\\.nuget\\packages\\",
-      "outputPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\obj\\",
+      "outputPath": "D:\\ChessProject\\Сhess.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KostyaShiriton\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5744,8 +5744,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj": {
-              "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj"
+            "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj": {
+              "projectPath": "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj"
             }
           }
         }

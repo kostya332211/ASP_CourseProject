@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj",
+      "projectUniqueName": "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj",
       "projectName": "Chess.Core",
-      "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj",
+      "projectPath": "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj",
       "packagesPath": "C:\\Users\\KostyaShiriton\\.nuget\\packages\\",
-      "outputPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\obj\\",
+      "outputPath": "D:\\ChessProject\\Chess.Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KostyaShiriton\\AppData\\Roaming\\NuGet\\NuGet.Config",

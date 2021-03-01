@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "G53G0bR7OHykIe3I4iBVqGxKOsLHk9D6Lx0jcLJ9Q5VHdjRjSri6+gFUhsPDzIZBS++0cEoBWZfzRsbPEvF4lg==",
+  "success": true,
+  "projectFilePath": "D:\\ChessProject\\Chess.Engine\\Chess.Engine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KostyaShiriton\\.nuget\\packages\\htmlagilitypack\\1.11.30\\htmlagilitypack.1.11.30.nupkg.sha512"
+  ],
+  "logs": []
+}

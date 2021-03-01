@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "HtmlAgilityPack/1.11.30": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -2588,6 +2597,19 @@
           "bin/placeholder/Chess.Core.dll": {}
         }
       },
+      "Chess.Engine/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "HtmlAgilityPack": "1.11.30"
+        },
+        "compile": {
+          "bin/placeholder/Chess.Engine.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Chess.Engine.dll": {}
+        }
+      },
       "Chess.Logic/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2618,6 +2640,54 @@
     }
   },
   "libraries": {
+    "HtmlAgilityPack/1.11.30": {
+      "sha512": "IuOSVuuHCJKrnAjNe5rZnZCyR/NpXL6ExEL7UiM8h4fnhbt8tLqIKol9q5Lv0uoxWO8fl9Uq+1kpGfMDUdr5zA==",
+      "type": "package",
+      "path": "htmlagilitypack/1.11.30",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "htmlagilitypack.1.11.30.nupkg.sha512",
+        "htmlagilitypack.nuspec",
+        "lib/Net35/HtmlAgilityPack.dll",
+        "lib/Net35/HtmlAgilityPack.pdb",
+        "lib/Net35/HtmlAgilityPack.xml",
+        "lib/Net40-client/HtmlAgilityPack.dll",
+        "lib/Net40-client/HtmlAgilityPack.pdb",
+        "lib/Net40-client/HtmlAgilityPack.xml",
+        "lib/Net40/HtmlAgilityPack.XML",
+        "lib/Net40/HtmlAgilityPack.dll",
+        "lib/Net40/HtmlAgilityPack.pdb",
+        "lib/Net45/HtmlAgilityPack.XML",
+        "lib/Net45/HtmlAgilityPack.dll",
+        "lib/Net45/HtmlAgilityPack.pdb",
+        "lib/NetCore45/HtmlAgilityPack.XML",
+        "lib/NetCore45/HtmlAgilityPack.dll",
+        "lib/NetCore45/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.3/HtmlAgilityPack.dll",
+        "lib/netstandard1.3/HtmlAgilityPack.pdb",
+        "lib/netstandard1.3/HtmlAgilityPack.xml",
+        "lib/netstandard1.6/HtmlAgilityPack.deps.json",
+        "lib/netstandard1.6/HtmlAgilityPack.dll",
+        "lib/netstandard1.6/HtmlAgilityPack.pdb",
+        "lib/netstandard1.6/HtmlAgilityPack.xml",
+        "lib/netstandard2.0/HtmlAgilityPack.deps.json",
+        "lib/netstandard2.0/HtmlAgilityPack.dll",
+        "lib/netstandard2.0/HtmlAgilityPack.pdb",
+        "lib/netstandard2.0/HtmlAgilityPack.xml",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.XML",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.dll",
+        "lib/portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.XML",
+        "lib/uap10.0/HtmlAgilityPack.dll",
+        "lib/uap10.0/HtmlAgilityPack.pdb",
+        "lib/uap10.0/HtmlAgilityPack.pri"
+      ]
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -8609,6 +8679,11 @@
       "path": "../Chess.Core/Chess.Core.csproj",
       "msbuildProject": "../Chess.Core/Chess.Core.csproj"
     },
+    "Chess.Engine/1.0.0": {
+      "type": "project",
+      "path": "../Chess.Engine/Chess.Engine.csproj",
+      "msbuildProject": "../Chess.Engine/Chess.Engine.csproj"
+    },
     "Chess.Logic/1.0.0": {
       "type": "project",
       "path": "../Chess.Logic/Chess.Logic.csproj",
@@ -8622,6 +8697,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Chess.Engine >= 1.0.0",
       "Chess.Logic >= 1.0.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
@@ -8634,11 +8710,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Web\\Chess.Web.csproj",
+      "projectUniqueName": "D:\\ChessProject\\Chess.Web\\Chess.Web.csproj",
       "projectName": "Chess.Web",
-      "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Web\\Chess.Web.csproj",
+      "projectPath": "D:\\ChessProject\\Chess.Web\\Chess.Web.csproj",
       "packagesPath": "C:\\Users\\KostyaShiriton\\.nuget\\packages\\",
-      "outputPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Web\\obj\\",
+      "outputPath": "D:\\ChessProject\\Chess.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KostyaShiriton\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8655,11 +8731,14 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\Chess.Logic.csproj": {
-              "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\Chess.Logic.csproj"
+            "D:\\ChessProject\\Chess.Engine\\Chess.Engine.csproj": {
+              "projectPath": "D:\\ChessProject\\Chess.Engine\\Chess.Engine.csproj"
             },
-            "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj": {
-              "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj"
+            "D:\\ChessProject\\Chess.Logic\\Chess.Logic.csproj": {
+              "projectPath": "D:\\ChessProject\\Chess.Logic\\Chess.Logic.csproj"
+            },
+            "D:\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj": {
+              "projectPath": "D:\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj"
             }
           }
         }

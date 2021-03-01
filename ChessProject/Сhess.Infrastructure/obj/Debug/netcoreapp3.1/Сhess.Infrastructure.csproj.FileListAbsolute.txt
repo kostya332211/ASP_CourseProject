@@ -1,0 +1,12 @@
+D:\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.deps.json
+D:\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.dll
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csprojAssemblyReference.cache
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.AssemblyInfoInputs.cache
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.AssemblyInfo.cs
+D:\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Chess.Core.dll
+D:\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.pdb
+D:\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Chess.Core.pdb
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csproj.CoreCompileInputs.cache
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csproj.CopyComplete
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.dll
+D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.pdb

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1dQgMnW9/0/utymGkpCzPQynmMQyar50KxqbV2DtFixMHiB/O7vBBAJRMr0/PIy8EjY0fpfisKecbEQHzyqCnQ==",
+  "dgSpecHash": "wV9vxMCA0c0FvWcRX1SUCP9g1dqI1CYFXNBYTRJAKsDBHbqnW09EydIAgsCJt2Av5hJV0mSrhgqJiFiaCa54oA==",
   "success": true,
-  "projectFilePath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj",
+  "projectFilePath": "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

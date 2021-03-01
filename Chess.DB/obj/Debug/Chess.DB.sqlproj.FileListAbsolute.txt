@@ -8,3 +8,9 @@ D:\ChessProject\ChessProject\Chess.DB\obj\Debug\Model.xml
 D:\ChessProject\ChessProject\Chess.DB\obj\Debug\refactor.xml
 D:\ChessProject\ChessProject\Chess.DB\obj\Debug\postdeploy.sql
 D:\ChessProject\ChessProject\Chess.DB\obj\Debug\predeploy.sql
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\bin\Debug\Chess.DB.dacpac
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\bin\Debug\Chess.DB.dll
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\bin\Debug\Chess.DB.pdb
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\obj\Debug\Chess.DB.sqlprojAssemblyReference.cache
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\obj\Debug\Chess.DB.dll
+D:\CourseProjectReady\ChessProject\ChessProject\Chess.DB\obj\Debug\Chess.DB.pdb

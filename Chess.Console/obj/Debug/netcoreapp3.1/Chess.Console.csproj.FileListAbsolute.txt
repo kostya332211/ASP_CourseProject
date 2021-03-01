@@ -1,0 +1,15 @@
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.csprojAssemblyReference.cache
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.AssemblyInfoInputs.cache
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.AssemblyInfo.cs
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.csproj.CoreCompileInputs.cache
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.exe
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.deps.json
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.runtimeconfig.json
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.runtimeconfig.dev.json
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.dll
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\Chess.Console.pdb
+D:\ChessProject\Chess.Console\bin\Debug\netcoreapp3.1\HtmlAgilityPack.dll
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.csproj.CopyComplete
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.dll
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.pdb
+D:\ChessProject\Chess.Console\obj\Debug\netcoreapp3.1\Chess.Console.genruntimeconfig.cache

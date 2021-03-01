@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>0ad1e9fc-5a05-4109-b875-c49567f2829d</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Chess.Engine\Chess.Engine.csproj" />
     <ProjectReference Include="..\Chess.Logic\Chess.Logic.csproj" />
     <ProjectReference Include="..\Сhess.Infrastructure\Сhess.Infrastructure.csproj" />
   </ItemGroup>

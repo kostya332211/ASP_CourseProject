@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Chess.Web/1.0.0": {
         "dependencies": {
+          "Chess.Engine": "1.0.0",
           "Chess.Logic": "1.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
@@ -304,6 +305,17 @@
         },
         "compile": {
           "Chess.Web.dll": {}
+        }
+      },
+      "HtmlAgilityPack/1.11.30": {
+        "runtime": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.11.30.0",
+            "fileVersion": "1.11.30.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/HtmlAgilityPack.dll": {}
         }
       },
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
@@ -2175,6 +2187,17 @@
           "Chess.Core.dll": {}
         }
       },
+      "Chess.Engine/1.0.0": {
+        "dependencies": {
+          "HtmlAgilityPack": "1.11.30"
+        },
+        "runtime": {
+          "Chess.Engine.dll": {}
+        },
+        "compile": {
+          "Chess.Engine.dll": {}
+        }
+      },
       "Chess.Logic/1.0.0": {
         "dependencies": {
           "Chess.Core": "1.0.0"
@@ -3826,6 +3849,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "HtmlAgilityPack/1.11.30": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IuOSVuuHCJKrnAjNe5rZnZCyR/NpXL6ExEL7UiM8h4fnhbt8tLqIKol9q5Lv0uoxWO8fl9Uq+1kpGfMDUdr5zA==",
+      "path": "htmlagilitypack/1.11.30",
+      "hashPath": "htmlagilitypack.1.11.30.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -4912,6 +4942,11 @@
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
     "Chess.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Chess.Engine/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

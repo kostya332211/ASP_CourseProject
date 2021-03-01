@@ -1,0 +1,539 @@
+﻿@page
+@using Chess.Logic.EventArguments;
+@using Chess.Logic;
+@using Chess.Web.Models.Helper;
+<link rel="stylesheet" href="~/css/chat.css" />
+
+<p id="timeStatus"></p>
+
+
+<div id="playground" class="m-3" style="display: none">
+    <h2 style="margin:10px"><span id="opponentName">Opponent</span>(<span id="opponentRating">1700</span>) - <span id="timeOpponentMinutes">77</span>:<span id="timeOpponentSeconds">7</span></h2>
+
+    <div class="row">
+        <div id="boardContainer" class="col-xs-12 col-sm-12 col-md-6" style="padding: 0px;">
+            <div id="board" class="row chessboard col-12" style="margin: 0px; padding: 0px;">
+
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 pl-5 pr-5 pb-5">
+            <div class="main">
+                <div class="px-2 scroll" id="chat-container" style="height: 384px;">
+
+                </div>
+                <nav class="navbar bg-white navbar-expand-sm d-flex justify-content-between">
+                    @if (ViewBag.IsBlockedChat)
+                    {
+                        <input disabled="disabled" type="text" name="text" class="form-control" placeholder="You Blocked in chat!!!" id="message">
+                    }
+                    else
+                    {
+                        <input type="text" name="text" class="form-control" placeholder="Type a message..." id="message">
+                        <input type="button" id="sendBtn" value="Send" class="btn-secondary" />
+                    }
+                    <input type="button" id="sendDraw" value="SendDraw" class="btn-primary" />
+                    <div class="icondiv d-flex justify-content-end align-content-center text-center ml-2"> <i class="fa fa-paperclip icon1"></i> <i class="fa fa-arrow-circle-right icon2"></i> </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <h2 style="margin-top:-25px;"><span id="yourName">Opponent</span>(<span id="yourRating">1700</span>) - <span id="timeMinutes">77</span>:<span id="timeSeconds">7</span></h2>
+
+</div>
+
+
+
+<div id="gameTypesContainer">
+    <div class="card-deck">
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/st.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Bullet (2:00) - <b>@ViewBag.Rating.BulletRating</b></h5>
+                <button type="submit" id="findGameBullet" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="bulletLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/st.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Blitz (5:00) - <b>@ViewBag.Rating.BlitzRating</b></h5>
+                <button type="submit" id="findGameBlitz" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="blitzLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/st.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Rapid (10:00) - <b>@ViewBag.Rating.RapidRating</b></h5>
+                <button type="submit" id="findGameRapid" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="rapidLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="card-deck" style="margin-top: 20px;">
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/p.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Only pawns mode - <b>@ViewBag.Rating.OnlyPawnsRating</b></h5>
+                <button type="submit" id="findGameOnlyPawns" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="onlyPawnsLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/kn.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Only knights mode - <b>@ViewBag.Rating.OnlyKnightsRating</b></h5>
+                <button type="submit" id="findGameOnlyKnights" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="onlyKnightsLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/games/q.png" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Only queens mode - <b>@ViewBag.Rating.OnlyQueensRating</b></h5>
+                <button type="submit" id="findGameOnlyQueens" class="btn btn-secondary">Find Game</button>
+                <img class="loadingIcon" id="onlyQueensLoading" src="~/images/games/finding.gif" width="38" style="display: none; cursor: pointer;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+        var connection = new signalR.HubConnectionBuilder().withUrl("/gameHub").build();
+        var gameId;
+        var playerId;
+        var playerColor;
+        var playerName;
+        var gameOver;
+        var isMyMove = false;
+        var gameAlreadyEnd = false;
+        var int;
+        function displayWindowSize() {
+            var w = $('#boardContainer').width();
+            $('.square').width(w / 8);
+            $('.square').height(w / 8);
+            $('.square > img').width(w / 8);
+
+            $('#options').width(w);
+        }
+
+        connection.start();
+
+        connection.on("PlayerJoined", function (player) {
+            playerId = player.id;
+        });
+
+        $('#sendDraw').click(function () {
+            connection.invoke("SendDraw");
+        });
+
+        connection.on("AcceptDraw", function (player) {
+            if(confirm("Your opponent has offered you a draw. Do you agree?"))
+            {
+                connection.invoke("AcceptDraw");
+            }
+        });
+
+        connection.on("EndGame", function (model, isSender) {
+            console.log(model);
+            console.log(isSender);
+
+            var message = '';
+            if ((model.user1Nickname === playerName || model.user2Nickname === playerName) && !gameAlreadyEnd) {
+                switch (model.endGameType) {
+                    case 1:
+                        message += 'Checkmate. ';
+                        break;
+                    case 3:
+                        message += 'Opponent leave. ';
+                        break;
+                    case 4:
+                        message += 'Time is over. ';
+                        break;
+                    case 5:
+                        message += 'Mutual consent ';
+                        break;
+                }
+                if (model.winnerNickname === playerName) {
+                    message += 'You win';
+                } else if (model.winnerNickname != null) {
+                    message += 'You lose';
+                } else {
+                    message += 'Draw';
+                }
+                alert(message);
+                if (isSender) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Game/EndGame',
+                        data: model,
+                        success: function(msg) {
+                            document.location.href = '/';
+                        }
+                    });
+                } else {
+                    document.location.href = '/';
+                }
+
+
+            }
+
+            gameAlreadyEnd = true;
+
+        });
+
+
+
+
+        function disableButtons() {
+            document.getElementById("findGameBullet").disabled = true;
+            document.getElementById("findGameBlitz").disabled = true;
+            document.getElementById("findGameRapid").disabled = true;
+            document.getElementById("findGameOnlyPawns").disabled = true;
+            document.getElementById("findGameOnlyKnights").disabled = true;
+            document.getElementById("findGameOnlyQueens").disabled = true;
+
+            document.getElementById("bulletLoading").style.display = "none";
+            document.getElementById("blitzLoading").style.display = "none";
+            document.getElementById("rapidLoading").style.display = "none";
+            document.getElementById("onlyPawnsLoading").style.display = "none";
+            document.getElementById("onlyKnightsLoading").style.display = "none";
+            document.getElementById("onlyQueensLoading").style.display = "none";
+        }
+
+        function enableButtons() {
+            document.getElementById("findGameBullet").disabled = false;
+            document.getElementById("findGameBlitz").disabled = false;
+            document.getElementById("findGameRapid").disabled = false;
+            document.getElementById("findGameOnlyPawns").disabled = false;
+            document.getElementById("findGameOnlyKnights").disabled = false;
+            document.getElementById("findGameOnlyQueens").disabled = false;
+        }
+
+        $('.loadingIcon').click(function () {
+            connection.invoke("CancelSearch");
+            disableButtons();
+            enableButtons();
+        });
+
+
+        $('#findGameBullet').click(function () {
+            connection.invoke("FindGame", 1, @ViewBag.Rating.BulletRating);
+            disableButtons();
+            document.getElementById("bulletLoading").style.display = "inline-block";
+        });
+
+        $('#findGameBlitz').click(function () {
+            connection.invoke("FindGame", 2, @ViewBag.Rating.BlitzRating);
+            disableButtons();
+            document.getElementById("blitzLoading").style.display = "inline-block";
+        });
+
+        $('#findGameRapid').click(function () {
+            connection.invoke("FindGame", 3, @ViewBag.Rating.RapidRating);
+            disableButtons();
+            document.getElementById("rapidLoading").style.display = "inline-block";
+        });
+
+        $('#findGameOnlyPawns').click(function () {
+            connection.invoke("FindGame", 4, @ViewBag.Rating.OnlyPawnsRating);
+            disableButtons();
+            document.getElementById("onlyPawnsLoading").style.display = "inline-block";
+        });
+
+        $('#findGameOnlyKnights').click(function () {
+            connection.invoke("FindGame", 5, @ViewBag.Rating.OnlyKnightsRating);
+            disableButtons();
+            document.getElementById("onlyKnightsLoading").style.display = "inline-block";
+        });
+
+        $('#findGameOnlyQueens').click(function () {
+            connection.invoke("FindGame", 6, @ViewBag.Rating.OnlyQueensRating);
+            disableButtons();
+            document.getElementById("onlyQueensLoading").style.display = "inline-block";
+        });
+
+
+
+        $('#sendBtn').click(function () {
+            var message = document.getElementById("message").value;
+            connection.invoke("Send", message, gameId);
+            $('#message').val('');
+        });
+
+        connection.on("Send", function (data) {
+            var classes = '';
+            if (data.isCallerMessage) {
+                classes = "text-right justify-content-end";
+            }
+            var message = `<div class="d-flex align-items-center ${classes}">
+            <div class="pr-2">
+                <span class="name">${data.name}</span>
+                <p class="msg">${data.message}</p>
+            </div>
+        </div>`;
+            $('#chat-container').append(message);
+        });
+
+        connection.on("Start", function (game) {
+            gameAlreadyEnd = false;
+            console.log(game);
+            if (game.id != "") {
+
+                gameId = game.id;
+                var iPlayer1 = game.player1.id == playerId;
+
+                document.getElementById('timeMinutes').innerText = game.minutesForPlayer;
+                document.getElementById('timeOpponentMinutes').innerText = game.minutesForPlayer;
+                document.getElementById('timeSeconds').innerText = 0;
+                document.getElementById('timeOpponentSeconds').innerText = 0;
+                if (iPlayer1) {
+                    document.getElementById('opponentName').innerText = game.player2.userName;
+                    document.getElementById('yourName').innerText = game.player1.userName;
+                    document.getElementById('opponentRating').innerText = game.player2.rating;
+                    document.getElementById('yourRating').innerText = game.player1.rating;
+                    isMyMove = true;
+                } else {
+                    document.getElementById('opponentName').innerText = game.player1.userName;
+                    document.getElementById('yourName').innerText = game.player2.userName;
+                    document.getElementById('opponentRating').innerText = game.player1.rating;
+                    document.getElementById('yourRating').innerText = game.player2.rating;
+                }
+
+
+                document.getElementById('gameTypesContainer').style.display = "none";
+                playerColor = (playerId == game.player1.id) ? game.player1.color : game.player2.color;
+                setupPlayground(game);
+                document.getElementById('playground').style.display = "block";
+                //document.getElementById('timeView').style.display = "block";
+                Update(game);
+                playerName = (playerId == game.player1.id) ? game.player1.userName : game.player2.userName;
+
+                displayWindowSize();
+                updateStatus(game.movingPlayer.userName);
+                startTime(game.minutesForPlayer);
+            }
+        });
+
+        connection.on("MoveDone", function (game, move) {
+            Update(game);
+            isMyMove = !isMyMove;
+            if (!gameOver) {
+                updateStatus(game.movingPlayer.userName);
+            }
+        });
+
+
+        function updateStatus(name) {
+            var timeStatus = document.getElementById('timeStatus');
+            if (name == playerName) {
+                timeStatus.innerText = "Status: It's your turn";
+                timeStatus.style.color = "green";
+            }
+            else {
+                timeStatus.innerText = "Status: " + name + " has to move";
+                timeStatus.style.color = "red";
+            }
+        }
+
+        connection.on("ShowPossibleMoves", function (game) {
+            var board = document.getElementById('board');
+            resetPossibleMoves(board);
+            for (i = 0; i < 64; i++) {
+                    if (game.chessBoard.squares[i].possibleMove) {
+                        board.children[(game.movingPlayer.color == 0) ? i : 63 - i].classList.add('dropzone');
+                    }
+                    if (game.chessBoard.squares[i].isSelected) {
+                        board.children[(game.movingPlayer.color == 0) ? i : 63 - i].firstChild.id = 'selected';
+                    }
+                }
+        });
+
+
+
+        function setupPlayground(game) {
+            var t = @(Html.EnumToString<Color>());
+        }
+
+        function resetBoard() {
+            var board = document.getElementById('board');
+            board.innerHTML = "";
+        }
+
+        function resetPossibleMoves(board) {
+            for (i = 0; i < board.children.length; i++) {
+                board.children[i].classList.remove("dropzone");
+                if (board.children[i].firstChild != null) {
+                        board.children[i].firstChild.id = "";
+                    }
+            };
+        }
+
+        function Update(game) {
+            resetBoard();
+            var b = document.getElementById('board');
+            game.chessBoard.squares.forEach(entry => {
+                var child = document.createElement("div");
+                child.classList.add(entry.name);
+                var t = @(Html.EnumToString<Color>());
+                child.classList.add("square");
+                child.classList.add(t[entry.color].toLowerCase());
+
+                if (entry.piece != null) {
+                    var svg = document.createElement("img");
+
+                    svg.src = "/icons/figures/" + t[entry.piece.color].toLowerCase() + "_" + entry.piece.name + ".svg";
+                    child.appendChild(svg);
+
+                    if (entry.piece.color == playerColor) {
+                        child.addEventListener("mousedown", function () {
+                            connection.invoke("PieceSelected", entry.position.posX, entry.position.posY);
+                            child.firstChild.classList.add(entry.name);
+                        });
+
+                        child.firstChild.classList.add("drag-drop");
+                    }
+                }
+
+                b.appendChild(child);
+            });
+
+            if (playerColor == 1) {
+                reverseChildren(b);
+            }
+
+            displayWindowSize();
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        function reverseChildren(parent) {
+            for (var i = 1; i < parent.childNodes.length; i++) {
+                parent.insertBefore(parent.childNodes[i], parent.firstChild);
+            }
+        }
+        		let startPos = {x:-1,y:-1};
+
+
+interact('.drag-drop').draggable({
+	inertia: true,
+	snap: {
+      targets: [startPos],
+      relativePoints: [ { x: 0, y: 0 } ],
+      endOnly: true,
+    },
+	listeners: {
+		start (event) {
+			var rect = interact.getElementRect(event.target);
+
+				startPos = {
+					x: rect.left,
+					y: rect.top
+				}
+
+				event.interactable.options.drag.snap.targets = [startPos];
+		},
+		move (event) {
+			var target = event.target,
+			x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+			y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+			target.style.webkitTransform =
+			target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+
+			target.setAttribute('data-x', x);
+			target.setAttribute('data-y', y);
+        },
+        end (event) {
+            var test = "";
+        }
+	}
+});
+
+        interact('.dropzone').dropzone({
+    accept: '#selected',
+	overlap: 'center',
+	ondragenter: function (event) {
+		var dropRect = interact.getElementRect(event.target),
+		    dropTarget = {
+		      x: dropRect.left,
+		      y: dropRect.top
+		    };
+    event.draggable.draggable({
+      snap: { targets: [dropTarget] },
+    });
+
+		var draggableElement = event.relatedTarget,
+            dropzoneElement = event.target;
+
+        dropzoneElement.classList.add('drop-target');
+        draggableElement.classList.add('can-drop');
+	},
+            ondragleave: function (event) {
+        event.draggable.draggable({
+      snap: { targets: [startPos] },
+    });
+        event.target.classList.remove('drop-target');
+        event.relatedTarget.classList.remove('can-drop');
+	},
+	ondropactivate: function (event) {
+        event.target.classList.add('drop-active');
+    },
+	ondropdeactivate: function (event) {
+        event.target.classList.remove('drop-active');
+        event.target.classList.remove('drop-target');
+    },
+            ondrop: function (event) {
+                event.draggable.draggable({ snap: { targets: [] } });
+                var piece = event.relatedTarget.classList[1];
+                var square = event.target.classList[0];
+                connection.invoke("MoveSelected", piece, square);
+            },
+            ondown: function (event) {
+                var t = "Test";
+            }
+        });
+
+        function startTime(minutes) {
+            var myMinutes = minutes;
+            var mySeconds = 0;
+            var opponentMinutes = minutes;
+            var opponentSeconds = 0;
+
+
+             int = setInterval(() => {
+                if (isMyMove) {
+                    if (mySeconds === 0) {
+                        myMinutes--;
+                        if (myMinutes < 0) {
+                            clearInterval(int);
+                        }
+                        mySeconds = 60;
+                    }
+                    mySeconds--;
+                    document.getElementById('timeMinutes').innerText = myMinutes > 9 ? myMinutes : '0' + myMinutes;
+                    document.getElementById('timeSeconds').innerText = mySeconds > 9 ? mySeconds : '0' + mySeconds;
+
+                } else {
+                    if (opponentSeconds === 0) {
+                        opponentMinutes--;
+                        if (opponentMinutes < 0) {
+                            clearInterval(int);
+                            connection.invoke("OpponentTimeIsOver", gameId, playerName);
+                        }
+                        opponentSeconds = 60;
+                    }
+                    opponentSeconds--;
+
+                    document.getElementById('timeOpponentMinutes').innerText = opponentMinutes > 9 ? opponentMinutes : '0' + opponentMinutes;
+                    document.getElementById('timeOpponentSeconds').innerText = opponentSeconds > 9 ? opponentSeconds : '0' + opponentSeconds;
+                }
+            }, 1000);
+        }
+    });
+
+</script>

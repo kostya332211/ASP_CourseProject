@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[EndGameType]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Type] NVARCHAR(32) NOT NULL
+)

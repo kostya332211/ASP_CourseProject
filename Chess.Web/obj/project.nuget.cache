@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VnAjyQP6gGcPuzCDf0YzckW4jiwXKDGpD9lPB6XP9lYvjYUSPjIVPdDO2DF1w2tSb6Tp3SVavUycC0LG2qiwBQ==",
+  "dgSpecHash": "ntxPz6vbn3r4vrUhRjMwONMiaJGevAQ2L1XwZ9kELf+y0g3J5EhNCAIMlgPnAmWdRuvJadBbAmpS6WaFsIRYTw==",
   "success": true,
-  "projectFilePath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Web\\Chess.Web.csproj",
+  "projectFilePath": "D:\\ChessProject\\Chess.Web\\Chess.Web.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\KostyaShiriton\\.nuget\\packages\\htmlagilitypack\\1.11.30\\htmlagilitypack.1.11.30.nupkg.sha512",
     "C:\\Users\\KostyaShiriton\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\KostyaShiriton\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\KostyaShiriton\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",

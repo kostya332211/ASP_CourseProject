@@ -1,0 +1,24 @@
+services:
+  chess.web:
+    build:
+      context: D:\CourseProjectReady\ChessProject\ChessProject
+      dockerfile: Chess.Web\Dockerfile
+    depends_on:
+      db:
+        condition: service_started
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: chessweb
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\KostyaShiriton\AppData\Roaming\ASP.NET\Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+    - C:\Users\KostyaShiriton\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: 1Secure*Password1
+    image: microsoft/mssql-server-windows-express
+version: '3.4'

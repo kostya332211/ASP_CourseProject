@@ -1,0 +1,86 @@
+﻿@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Chess.Web</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="~/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/js/signalr/signalr.min.js"></script>
+    <script type="text/javascript" src="~/js/timer.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+    <script type="text/javascript" src="~/js/chess.js"></script>
+    <link rel="stylesheet" href="~/css/chess.css" />
+    <link href="~/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <header>
+    </header>
+    <div id="templatemo_wrapper">
+
+        <div id="templatemo_header"></div>
+
+        <div id="templatemo_banner">
+
+            <div id="templatemo_menu">
+
+                <ul>
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+
+                        @if (Context.User.IsInRole("Admin"))
+                        {
+                            <li><a asp-controller="AdminPanel" asp-action="Panel">Panel</a></li>
+                        }
+                        else
+                        {
+                            <li><a asp-controller="User" asp-action="UserProfile">Profile</a></li>
+                            <li><a asp-controller="Game" asp-action="GameLobby">Play</a></li>
+                        }
+                        <li><a asp-controller="Communities" asp-action="Chat">Community</a></li>
+                        <li><a asp-controller="Statistic" asp-action="TopPlayers">Top players</a></li>
+                        <li><a asp-controller="User" asp-action="LogOut">Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li><a asp-controller="User" asp-action="Login">Log In</a></li>
+                        <li><a asp-controller="User" asp-action="Register">Register</a></li>
+                    }
+                </ul>
+
+            </div>
+
+            @if (Context.User.Identity.IsAuthenticated)
+            {
+                foreach (var claim in Context.User.Claims)
+                {
+                    switch (claim.Type)
+                    {
+                        case ClaimTypes.NameIdentifier:
+
+                            <div id="banner_right">
+                                <h1>HI, @claim.Value</h1>
+                            </div>
+                        break;
+                    }
+                }
+                
+            }
+
+        </div>
+        <div id="templatemo_main_wrapper">
+            <div id="templatemo_content_wrapper">
+                @RenderBody()
+            </div>
+        </div>
+        <div id="templatemo_main_bottom"></div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "raiij/BucuJs1KVIEM5hDJLsgdcGBPz8VHET2hmJxwH/YMaR1g6zyxKtNAbTx8SNTKiqmktvxfkOQRZGdCg7bg==",
+  "dgSpecHash": "PiYfTQIy3aSZx7LtbA7sgq1az1Y9ABdrFaaIP962d5cCGMWXejc49gvPQXswGT5iBy6EAcq1BPowQrBq1V5bYA==",
   "success": true,
-  "projectFilePath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
+  "projectFilePath": "D:\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

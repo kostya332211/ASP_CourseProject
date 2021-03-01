@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
+      "projectUniqueName": "D:\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
       "projectName": "Chess.Logic",
-      "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
+      "projectPath": "D:\\ChessProject\\Chess.Logic\\Chess.Logic.csproj",
       "packagesPath": "C:\\Users\\KostyaShiriton\\.nuget\\packages\\",
-      "outputPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Logic\\obj\\",
+      "outputPath": "D:\\ChessProject\\Chess.Logic\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\KostyaShiriton\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj": {
-              "projectPath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Chess.Core\\Chess.Core.csproj"
+            "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj": {
+              "projectPath": "D:\\ChessProject\\Chess.Core\\Chess.Core.csproj"
             }
           }
         }

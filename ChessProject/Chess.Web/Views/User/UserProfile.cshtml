@@ -1,0 +1,73 @@
+﻿@model Chess.Web.Models.ValidationModels.ChangePasswordValidationModel
+
+@*<form asp-action="Update" method="post">
+    <div class="container col-6">
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input type="text" asp-for="FirstName" class="form-control" data-val="false" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName"></label>
+            <input type="text" asp-for="LastName" class="form-control" data-val="false" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Nickname"></label>
+            <input type="text" asp-for="Nickname" class="form-control" data-val="false" />
+            <span asp-validation-for="Nickname" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input type="email" asp-for="Email" class="form-control" data-val="false" disabled="disabled" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Update" class="btn btn-secondary col-12" />
+    </div>
+</form>*@
+
+<form asp-action="ChangePassword" method="post">
+    <div class="container col-6">
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <input type="password" asp-for="Password" class="form-control" data-val="false" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RePassword"></label>
+            <input type="password" asp-for="RePassword" class="form-control" data-val="false" />
+            <span asp-validation-for="RePassword" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Change password" class="btn btn-secondary col-12" />
+    </div>
+</form>
+
+<table class="table" style="margin-top: 20px">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Game Type</th>
+        <th scope="col">Date</th>
+        <th scope="col">Opponent</th>
+        <th scope="col">Result</th>
+        <th scope="col">Result Type</th>
+    </tr>
+    </thead>
+    <tbody id="historyBody">
+    </tbody>
+</table>
+<script>
+    $.get("/api/statistic/gamesHistory").then(result => {
+        console.log(result);
+        var markup = '';
+        for (var i = 0; i < result.length; i++) {
+            markup += '<tr>';
+            markup += `<th>${result[i].gameType}</th>`;
+            markup += `<th>${result[i].gameDate}</th>`;
+            markup += `<th>${result[i].opponentNickname}</th>`;
+            markup += `<th>${result[i].result}</th>`;
+            markup += `<th>${result[i].resultType}</th>`;
+            markup += '</tr>';
+        }
+        document.getElementById('historyBody').innerHTML = markup;
+    });
+</script>

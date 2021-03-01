@@ -10,3 +10,15 @@ D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhes
 D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csproj.CopyComplete
 D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.dll
 D:\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.pdb
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.deps.json
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.dll
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Сhess.Infrastructure.pdb
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Chess.Core.dll
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\bin\Debug\netcoreapp3.1\Chess.Core.pdb
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csprojAssemblyReference.cache
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.AssemblyInfoInputs.cache
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.AssemblyInfo.cs
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csproj.CoreCompileInputs.cache
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.csproj.CopyComplete
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.dll
+D:\CourseProjectReady\ChessProject\ChessProject\Сhess.Infrastructure\obj\Debug\netcoreapp3.1\Сhess.Infrastructure.pdb

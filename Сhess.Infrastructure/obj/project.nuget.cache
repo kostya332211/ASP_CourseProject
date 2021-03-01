@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3vjmZQ3GDPBXT34dRf00qKPnO7YuyZFwyPcUQ86BvTJ64Ul/HRB8Qs7yV4RW1Zi9CzxQ689t/U7HzgzvQ99mEA==",
+  "dgSpecHash": "XsuFbAKF2ZjGRF0iI2/a6x3CyRPgnbNaGe9aOOYD+pDIm6MkDzX60bk+xaEpvaGiBCF+ufX0X1QgTRdBo6L6gg==",
   "success": true,
-  "projectFilePath": "D:\\CourseProjectReady\\ChessProject\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
+  "projectFilePath": "D:\\ChessProject\\Сhess.Infrastructure\\Сhess.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\KostyaShiriton\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\KostyaShiriton\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
